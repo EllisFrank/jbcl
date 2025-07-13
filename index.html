@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBLC - Justice Baidoo Consulting Limited</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary-color: #043927;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffffff;
+            --text-color: #333333;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            width: 100%;
+        }
+        
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        #preloader img {
+            width: 175px;
+            height: 43px;
+            animation: zoomFadeIn 2s ease-out forwards;
+        }
+        
+        @keyframes zoomFadeIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-link {
+            color: var(--accent-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--light-gray) !important;
+        }
+        
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(4, 57, 39, 0.7), rgba(4, 57, 39, 0.7)), 
+                        url('https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/469402364_122166679136053778_115596615082901923_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHzjg_tTf3eQ8rvYLJufQw4VYmyS5x4aOZVibJLnHho5vKnl-uAj5DPISYrFGhKE-q5m-1SVKlQNfgMw0lK3PfR&_nc_ohc=Pl4iv0dxDV4Q7kNvwEeOfzP&_nc_oc=AdkAJ6h4OtbhFegzgmm7mZQVhn9Q-KDETi2lcn4hUtc_ZkAqBpv8KlxHNe4aPPJZa0k&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=O9nme9qrX2EeR9LEktnT2g&oh=00_AfQ6C8LH8Y5o1DtduwH5CiZU_LrVkGXz3VcNVcLNoz9xhw&oe=6878A8DF') no-repeat center center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--accent-color);
+            position: relative;
+        }
+        
+        .hero-content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        /* Services */
+        .service-card {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .service-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .service-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .service-list li:before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Booking */
+        .booking-container {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Clients */
+        .client-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .client-logo.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .client-logo img {
+            max-width: 80%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .client-logo:hover img {
+            filter: grayscale(0%);
+        }
+        
+        /* Gallery */
+        .gallery-item {
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--accent-color);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Team */
+        .team-member {
+            margin-bottom: 30px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+        
+        .team-member.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light-gray);
+        }
+        
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* About Image */
+        .about-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Blog */
+        .blog-card {
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .blog-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.1);
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h5 {
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--accent-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .service-content,
+            .blog-content {
+                padding: 20px;
+            }
+            
+            .booking-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .hero {
+                height: auto;
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2::after {
+                width: 60px;
+            }
+            
+            .service-img,
+            .blog-img {
+                height: 180px;
+            }
+            
+            .gallery-item img {
+                height: 200px;
+            }
+            
+            .team-img {
+                width: 160px;
+                height: 160px;
+            }
+            
+            .booking-container {
+                padding: 20px;
+            }
+            
+            .footer-links {
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .service-content h3,
+            .blog-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .gallery-caption {
+                padding: 15px;
+            }
+            
+            .gallery-caption h5 {
+                font-size: 1rem;
+            }
+            
+            .gallery-caption p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="https://jbaidoo.com/wp-content/uploads/2020/10/New-SVG-logo-webtv2.svg" alt="JBLC Logo">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="https://jbaidoo.com/wp-content/uploads/2020/10/New-SVG-logo-webtv2.svg" alt="JBLC Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Our Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#explore">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Justice Baidoo Consulting Limited</h1>
+                <p>We specialize in documentary filmmaking, editorial writing, and media production to help tell your story with impact and authenticity.</p>
+                <a href="#booking" class="btn btn-primary">Book Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Documentary Filmmaking">
+                        </div>
+                        <div class="service-content">
+                            <h3>Documentary Filmmaking</h3>
+                            <p>JBCL creates corporate documentaries that showcase a company's history, values, achievements, and culture.</p>
+                            <ul class="service-list">
+                                <li>Corporate Documentary</li>
+                                <li>News/Investigative Documentary</li>
+                                <li>Promotional Documentaries</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-outline-primary">Book Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Editorial Writing">
+                        </div>
+                        <div class="service-content">
+                            <h3>Editorial Writing</h3>
+                            <p>We offer professional copywriting services for various content needs.</p>
+                            <ul class="service-list">
+                                <li>Copywriting and News Writing</li>
+                                <li>Proofreading and Editing</li>
+                                <li>Document Formatting and Layout Design</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-outline-primary">Book Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-card">
+                        <div class="service-img">
+                            <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/469328905_122166622808053778_6726920280414410673_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHOkQoh-0G2kG-rKRtM1w6OHJhNi7ZPIM0cmE2Ltk8gzUyM3vCdayeSps4gA-_DK3uaIogR3aoCbPHgdmpR9f4K&_nc_ohc=8I2Yb0B7YSsQ7kNvwEN7SBu&_nc_oc=Adk9wx0lvwSqy1CTooB6Os3JBWVfyKrqaQDlbxgBPW1aMYfl372riPgPxuFcOO3REvU&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=cTR3uLOVSjLtLpFenIrfWA&oh=00_AfRlnxUpcN74gIx189bqQ0T8EskyddC8gsO1sSecpqTcHQ&oe=6878B32F" alt="Media Production">
+                        </div>
+                        <div class="service-content">
+                            <h3>Media Production</h3>
+                            <p>JBCL specializes in capturing live events through professional videography.</p>
+                            <ul class="service-list">
+                                <li>Live Event Coverage and Streaming</li>
+                                <li>Event Highlight Reels and Recap</li>
+                                <li>Customized Multimedia Presentation</li>
+                            </ul>
+                            <a href="#booking" class="btn btn-outline-primary">Book Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Our Services</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="booking-container">
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="service" class="form-label">Select Service</label>
+                                    <select class="form-select" id="service" required>
+                                        <option value="" selected disabled>Choose a service</option>
+                                        <option value="documentary">Documentary Filmmaking</option>
+                                        <option value="editorial">Editorial Writing</option>
+                                        <option value="media">Media Production</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="date" class="form-label">Select Date</label>
+                                    <input type="text" class="form-control" id="date" placeholder="Select date" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Project Details</label>
+                                <textarea class="form-control" id="message" rows="4"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Booking</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore Our Work</h2>
+            </div>
+            
+            <div class="mb-5">
+                <h4 class="text-center mb-4">Our Clients</h4>
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="client-logo">
+                            <img src="https://www.mogcsp.gov.gh/wp-content/uploads/2021/03/unicef.png" alt="UNICEF">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="client-logo">
+                            <img src="https://jbaidoo.com/wp-content/uploads/2024/02/France-24.jpg" alt="France247">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="client-logo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/BBC_News_2019.svg/1200px-BBC_News_2019.svg.png" alt="BBC">
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="client-logo">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTetyfnlrQy1Bo_2TtZbJ0JHn0Mr1DS3j4-RA&s" alt="British Council">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-center mb-4">Photo & Video Gallery</h4>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-item">
+                            <img src="https://jbaidoo.com/wp-content/uploads/2024/02/JBCL-PHOTOVOICE_1-scaled.jpg" alt="Project 1">
+                            <div class="gallery-caption">
+                                <h5>Plan Ghana Photovoice Research</h5>
+                                <p>Documentary on food security initiatives in West Africa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project 2">
+                            <div class="gallery-caption">
+                                <h5>BBC – Climate Series</h5>
+                                <p>Investigative series on climate change impacts</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="gallery-item">
+                            <img src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Project 3">
+                            <div class="gallery-caption">
+                                <h5>UNDP – Women Empowerment</h5>
+                                <p>Documentary on women's empowerment programs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <h3>Our Story</h3>
+                    <strong><p>Justice Baidoo Consulting Limited. is a pan-African documentary production, communications and knowledge management firm based in Accra, Ghana.</p></strong>
+                    <p>We have over a decade of frontline journalism and documentary filmmaking experience working and collaborating with top institutions like the BBC, France 24, UNICEF, UNDP, GIZ, Solidaridad, Plan International and SEND West Africa, among others.</p>
+                    <img src="https://jbaidoo.com/wp-content/uploads/2024/01/WhatsApp-Image-2023-09-28-at-08.13.04.jpeg" alt="JBLC Team" class="about-img">
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-flex flex-column align-items-center">
+                        <h3 class="text-center mb-4">Our Team</h3>
+                        <div class="row mt-4">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="team-member">
+                                    <div class="team-img">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrUXeMAEriGqy1FggsN0ooy7oQQg9RPHafjw&s" alt="Justice Baidoo">
+                                    </div>
+                                    <h4>Justice Baidoo</h4>
+                                    <p class="text-muted">Founder & CEO</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="team-member">
+                                    <div class="team-img">
+                                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="Ama Mensah">
+                                    </div>
+                                    <h4>Ama Mensah</h4>
+                                    <p class="text-muted">Creative Director</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Blog Posts</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="https://jbaidoo.com/wp-content/uploads/2024/09/MGS-Cover-1024x683.jpg" alt="Blog Post 1">
+                        </div>
+                        <div class="blog-content">
+  <h3>MOGCSP Sensitizes Journalists In Social Protection</h3>
+  <p id="short-text">
+    The Ministry of Gender, Children and Social Protection through a sensitization workshop has trained and educated a group of journalists from the Journalist in Social Protection (JISOP) on the government social protection interventions...
+  </p>
+  
+  <div id="full-text" style="display: none;">
+    <p>
+      The Ministry of Gender, Children and Social Protection through a sensitization workshop has trained and educated a group of journalists from the Journalist in Social Protection (JISOP) on the government social protection interventions.
+    </p>
+    <p>
+      The workshop was held in Kumasi, Ashanti region. About 40 journalists from the Northern, Upper East, Upper West, Savannah, Bono, Bono East, and Ahafo regions were in attendance.
+    </p>
+    <p>
+      The workshop aimed to educate journalists and increase awareness and communication on social protection issues in the country. Sensitization topics included the Social Protection Bill, the Livelihood Empowerment Against Poverty (LEAP), the Ghana School Feeding Programme (GSFP), and the Ghana National Household Registry (GHNR).
+    </p>
+    <p>
+      Through the workshops, journalists shared their concerns on how best to increase awareness and enlighten the public on social protection.
+    </p>
+  </div>
+
+  <a href="javascript:void(0);" class="btn btn-link ps-0" onclick="toggleFullText(this)">
+    Read More <i class="bi bi-arrow-right"></i>
+  </a>
+</div>
+
+<script>
+  function toggleFullText(link) {
+    const fullText = document.getElementById('full-text');
+    const shortText = document.getElementById('short-text');
+
+    if (fullText.style.display === 'none') {
+      fullText.style.display = 'block';
+      shortText.style.display = 'none';
+      link.innerHTML = 'Show Less <i class="bi bi-arrow-up"></i>';
+    } else {
+      fullText.style.display = 'none';
+      shortText.style.display = 'block';
+      link.innerHTML = 'Read More <i class="bi bi-arrow-right"></i>';
+    }
+  }
+</script>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="https://jbaidoo.com/wp-content/uploads/2024/01/British-Council.png" alt="Blog Post 2">
+                        </div>
+                        <div class="blog-content">
+                            <h3>Jobs for Youth – Migration and Employment Promotion​</h3>
+                            <p>In 2019, we worked with the British Council and GIZ on their Jobs for Youth: Migration and Employment Promotion Project. The national project was to mentor and resource young entrepreneurs to start and nurture their businesses into...</p>
+                            <a href="#" class="btn btn-link ps-0">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <div class="blog-img">
+                            <img src="https://jbaidoo.com/wp-content/uploads/2024/01/Plan-2.png" alt="Blog Post 3">
+                        </div>
+                        <div class="blog-content">
+                            <h3>WISE Program Photostory​</h3>
+                            <p>In June 2023, we were hired by CDC Consult to produce a video documentary telling the story of selected women who were beneficiaries of the WISE programme. As part of our work, we selected women in four regions; Bono, Ahafo, Northern...</p>
+                            <a href="#" class="btn btn-link ps-0">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-primary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 mb-5 mb-lg-0">
+                    <h3>Get in Touch</h3>
+                    <p class="mb-4">Have a project in mind or want to learn more about our services? Reach out to us.</p>
+                    <div class="contact-info">
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-geo-alt-fill text-primary me-3 mt-1 fs-5"></i>
+                            <p>4th Link East Airport, Accra GZ-098-16</p>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-envelope-fill text-primary me-3 mt-1 fs-5"></i>
+                            <p>hello@jbaidoo.com</p>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <i class="bi bi-telephone-fill text-primary me-3 mt-1 fs-5"></i>
+                            <p>+233 24405 1293</p>
+                        </div>
+                        <div class="social-icons mt-4">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <form id="contactForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contactName" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contactEmail" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactSubject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="contactSubject" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <div class="footer-logo">
+                        <img src="https://jbaidoo.com/wp-content/uploads/2020/10/New-SVG-logo-webtv2.svg" alt="JBLC Logo">
+                    </div>
+                    <p>Justice Baidoo Consulting Limited specializes in documentary filmmaking, editorial writing, and media production to help tell impactful stories.</p>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="#services">Our Services</a></li>
+                            <li><a href="#explore">Explore</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                    <div class="footer-links">
+                        <h5>Services</h5>
+                        <ul>
+                            <li><a href="#">Documentary Filmmaking</a></li>
+                            <li><a href="#">Editorial Writing</a></li>
+                            <li><a href="#">Media Production</a></li>
+                            <li><a href="#">Consulting</a></li>
+                            <li><a href="#">Workshops</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p class="mb-0">&copy; 2025 Justice Baidoo Consulting Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 3000);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animation
+        function animateOnScroll() {
+            var elements = document.querySelectorAll('.service-card, .client-logo, .gallery-item, .team-member, .blog-card');
+            
+            elements.forEach(function(element) {
+                var elementPosition = element.getBoundingClientRect().top;
+                var screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your booking request! We will contact you shortly.');
+            this.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
