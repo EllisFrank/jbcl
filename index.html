@@ -34,6 +34,7 @@
             --white: #ffffff;            /* Pure white */
             --silver: #cccccc;           /* Light grey for borders */
             --light-silver: #eaeaea;     /* Lighter silver */
+            --dark-gray: #757575;        /* Dark gray for text */
         }
         
         body {
@@ -102,6 +103,7 @@
         
         .navbar-brand img {
             height: 40px;
+            filter: brightness(0) invert(0); /* Makes SVG black */
         }
         
         .nav-link {
@@ -142,7 +144,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(rgba(76, 44, 11, 0.4), rgba(76, 44, 11, 0.4)), 
-                        url('https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/469402364_122166679136053778_115596615082901923_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHzjg_tTf3eQ8rvYLJufQw4VYmyS5x4aOZVibJLnHho5vKnl-uAj5DPISYrFGhKE-q5m-1SVKlQNfgMw0lK3PfR&_nc_ohc=Pl4iv0dxDV4Q7kNvwEeOfzP&_nc_oc=AdkAJ6h4OtbhFegzgmm7mZQVhn9Q-KDETi2lcn4hUtc_ZkAqBpv8KlxHNe4aPPJZa0k&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=O9nme9qrX2EeR9LEktnT2g&oh=00_AfQ6C8LH8Y5o1DtduwH5CiZU_LrVkGXz3VcNVcLNoz9xhw&oe=6878A8DF') no-repeat center center;
+                        url('https://scontent.facc6-1.fna.fbcdn.net/v/t39.30808-6/469402364_122166679136053778_115596615082901923_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHzjg_tTf3eQ8rvYLJufQw4VYmyS5x4aOZVibJLnHho5vKnl-uAj5DPISYrFGhKE-q5m-1SVKlQNfgMw0lK3PfR&_nc_ohc=lFbGyaWvjI4Q7kNvwGvlDHR&_nc_oc=Adn5T6LBMscjvwtH_kIyjMXmLvORW_B4_LRma8SqzEznRHrAiADeAsrNpAP0NfkXCgo&_nc_zt=23&_nc_ht=scontent.facc6-1.fna&_nc_gid=Dp7gJUIyGszL4XtJimNu_g&oh=00_AfR0s_UNLbdWM_RoxQs6TqSIFj-LfFjjRsPKaBa2YSPtsw&oe=688172DF') no-repeat center center;
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -176,6 +178,7 @@
             font-weight: 700;
             margin-bottom: 20px;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            color: var(--white); /* White text for hero heading */
         }
         
         .hero p {
@@ -184,6 +187,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--white); /* White text for hero paragraph */
         }
         
         /* Buttons */
@@ -249,7 +253,7 @@
         }
         
         /* Cards */
-        .service-card, .booking-container, .gallery-item, .blog-card {
+        .service-card, .booking-container, .gallery-item {
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s ease;
@@ -433,98 +437,137 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        /* Blog */
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
         .blog-card {
-            margin-bottom: 30px;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
             transition: all 0.3s ease;
+            border: 1px solid var(--silver);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             opacity: 0;
             transform: translateY(30px);
         }
-        
+
         .blog-card.animate {
             opacity: 1;
             transform: translateY(0);
         }
-        
+
         .blog-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-        
+
         .blog-img {
             height: 200px;
             overflow: hidden;
         }
-        
+
         .blog-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .blog-card:hover .blog-img img {
             transform: scale(1.1);
         }
-        
+
         .blog-content {
             padding: 25px;
         }
-        
+
         .blog-content h3 {
             margin-bottom: 15px;
             font-weight: 600;
         }
-        
-        /* Blog Modal */
-        .blog-modal .modal-content {
-            border-radius: 10px;
-            overflow: hidden;
+
+        .blog-content h3 a {
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        
-        .blog-modal .modal-header {
-            border-bottom: none;
-            position: relative;
+
+        .blog-content h3 a:hover {
+            color: var(--primary);
         }
-        
-        .blog-modal .modal-header .btn-close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            background: rgba(255,255,255,0.8);
-            border-radius: 50%;
-            padding: 10px;
-            z-index: 1;
+
+        .blog-excerpt {
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
-        
-        .blog-modal .modal-body {
-            padding: 30px;
-        }
-        
-        .blog-modal .blog-featured-img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .blog-modal .blog-meta {
+
+        .blog-meta {
             display: flex;
+            justify-content: space-between;
             align-items: center;
+            font-size: 0.85rem;
+            color: var(--dark-gray);
+        }
+
+        .post-date {
+            color: var(--dark-gray);
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Lazy loading styles */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+
+        /* Blog Modal Styles */
+        .blog-modal-content img {
+            border-radius: 8px;
             margin-bottom: 20px;
-        }
-        
-        .blog-modal .blog-meta .author-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            width: 100%;
+            max-height: 400px;
             object-fit: cover;
-            margin-right: 10px;
         }
-        
-        .blog-modal .blog-meta .meta-text small {
-            color: #6c757d;
+
+        .blog-modal-content h2 {
+            color: var(--dark-text);
+            margin-bottom: 15px;
         }
-        
+
+        .blog-modal-content .blog-meta {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .blog-modal-content .blog-body {
+            line-height: 1.8;
+        }
+
+        .blog-modal-content .blog-body p {
+            margin-bottom: 15px;
+        }
+
         /* Contact Section */
         .contact-info {
             margin-bottom: 30px;
@@ -628,10 +671,6 @@
             .booking-container {
                 padding: 30px;
             }
-            
-            .blog-modal .blog-featured-img {
-                height: 300px;
-            }
         }
         
         @media (max-width: 767.98px) {
@@ -674,8 +713,9 @@
                 margin-bottom: 30px;
             }
             
-            .blog-modal .blog-featured-img {
-                height: 200px;
+            /* Blog grid responsive */
+            .blog-grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -811,7 +851,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-card">
                         <div class="service-img">
-                            <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/469328905_122166622808053778_6726920280414410673_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHOkQoh-0G2kG-rKRtM1w6OHJhNi7ZPIM0cmE2Ltk8gzUyM3vCdayeSps4gA-_DK3uaIogR3aoCbPHgdmpR9f4K&_nc_ohc=8I2Yb0B7YSsQ7kNvwEN7SBu&_nc_oc=Adk9wx0lvwSqy1CTooB6Os3JBWVfyKrqaQDlbxgBPW1aMYfl372riPgPxuFcOO3REvU&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=cTR3uLOVSjLtLpFenIrfWA&oh=00_AfRlnxUpcN74gIx189bqQ0T8EskyddC8gsO1sSecpqTcHQ&oe=6878B32F" alt="Media Production">
+                            <img src="https://scontent.facc1-1.fna.fbcdn.net/v/t39.30808-6/469328905_122166622808053778_6726920280414410673_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHOkQoh-0G2kG-rKRtM1w6OHJhNi7ZPIM0cmE2Ltk8gzUyM3vCdayeSps4gA-_DK3uaIogR3aoCbPHgdmpR9f4K&_nc_ohc=GQ5xzkET5QUQ7kNvwENFfDf&_nc_oc=AdnK0sdUF9H8x_RkWgpzXDz3x5na8TDGEqAHUTsjQUl8r3XMgFJwJtkbf3kMyAL1ysM&_nc_zt=23&_nc_ht=scontent.facc1-1.fna&_nc_gid=drOpuWoFOh-SADp6dOJ6NQ&oh=00_AfTiqdIHujCZa8SwkpWRzGXtvvtqRHBsJ7umO0Hs6Gu_ag&oe=68817D2F" alt="Media Production">
                         </div>
                         <div class="service-content">
                             <h3>Media Production</h3>
@@ -1001,43 +1041,8 @@
                 <h2>Latest Blog Posts</h2>
                 <p>Insights and updates from our team</p>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <div class="blog-img">
-                            <img src="https://jbaidoo.com/wp-content/uploads/2024/09/MGS-Cover-1024x683.jpg" alt="Blog Post 1">
-                        </div>
-                        <div class="blog-content">
-                            <h3>MOGCSP Sensitizes Journalists In Social Protection</h3>
-                            <p>The Ministry of Gender, Children and Social Protection through a sensitization workshop has trained and educated a group of journalists from the Journalist in Social Protection (JISOP) on the government social protection interventions...</p>
-                            <a href="#" class="btn btn-link ps-0 read-more-btn" data-bs-toggle="modal" data-bs-target="#blogModal1">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <div class="blog-img">
-                            <img src="https://jbaidoo.com/wp-content/uploads/2024/01/British-Council.png" alt="Blog Post 2">
-                        </div>
-                        <div class="blog-content">
-                            <h3>Jobs for Youth – Migration and Employment Promotion​</h3>
-                            <p>In 2019, we worked with the British Council and GIZ on their Jobs for Youth: Migration and Employment Promotion Project. The national project was to mentor and resource young entrepreneurs to start and nurture their businesses into...</p>
-                            <a href="#" class="btn btn-link ps-0 read-more-btn" data-bs-toggle="modal" data-bs-target="#blogModal2">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="blog-card">
-                        <div class="blog-img">
-                            <img src="https://jbaidoo.com/wp-content/uploads/2024/01/Plan-2.png" alt="Blog Post 3">
-                        </div>
-                        <div class="blog-content">
-                            <h3>WISE Program Photostory​</h3>
-                            <p>In June 2023, we were hired by CDC Consult to produce a video documentary telling the story of selected women who were beneficiaries of the WISE programme. As part of our work, we selected women in four regions; Bono, Ahafo, Northern...</p>
-                            <a href="#" class="btn btn-link ps-0 read-more-btn" data-bs-toggle="modal" data-bs-target="#blogModal3">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be dynamically inserted here -->
             </div>
             <div class="text-center mt-4">
                 <a href="#" class="btn btn-primary">View All Posts</a>
@@ -1146,6 +1151,20 @@
         </div>
     </footer>
 
+    <!-- Blog Modal -->
+    <div class="modal fade" id="blogModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="blogModalContent">
+            <!-- Blog content will be inserted here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -1234,13 +1253,190 @@
             this.reset();
         });
 
-        // Blog modal handling
-        document.querySelectorAll('.read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // The modal will be shown automatically by Bootstrap
-                // because we're using data-bs-toggle and data-bs-target attributes
+        // Blog posts data and functionality
+        const blogPosts = [
+            {
+                id: 1,
+                title: "MOGCSP Sensitizes Journalists In Social Protection",
+                excerpt: "The Ministry of Gender, Children and Social Protection through a sensitization workshop has trained and educated a group of journalists...",
+                date: "September 15, 2024",
+                image: "https://jbaidoo.com/wp-content/uploads/2024/09/MGS-Cover-1024x683.jpg",
+                link: "#",
+                fullContent: `
+                    <div class="blog-modal-content">
+                        <img src="https://jbaidoo.com/wp-content/uploads/2024/09/MGS-Cover-1024x683.jpg" alt="Blog post image" class="img-fluid mb-4">
+                        <h2>MOGCSP Sensitizes Journalists In Social Protection</h2>
+                        <div class="blog-meta mb-4">
+                            <span class="post-date">September 15, 2024</span>
+                        </div>
+                        <div class="blog-body">
+                            <p>The Ministry of Gender, Children and Social Protection through a sensitization workshop has trained and educated a group of journalists from the Journalist in Social Protection (JISOP) on the government social protection interventions.</p>
+                            <p>The workshop was aimed at equipping journalists with the requisite knowledge on social protection to enable them report accurately on issues of social protection in the country.</p>
+                            <p>Addressing the participants, the Minister for Gender, Children and Social Protection, Hon. Lariba Zuweira Abudu said the media plays a critical role in shaping public opinion and therefore it was important that journalists understood the social protection interventions being implemented by government.</p>
+                            <p>She mentioned some of the interventions as the Livelihood Empowerment Against Poverty (LEAP), the Ghana School Feeding Programme, the Labour Intensive Public Works (LIPW), the National Health Insurance Scheme (NHIS) and the Free Senior High School policy.</p>
+                            <p>The Minister urged the journalists to use their platforms to educate the public on these interventions to ensure that the right information gets to the people.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 2,
+                title: "Jobs for Youth – Migration and Employment Promotion",
+                excerpt: "In 2019, we worked with the British Council and GIZ on their Jobs for Youth: Migration and Employment Promotion Project...",
+                date: "June 2, 2024",
+                image: "https://jbaidoo.com/wp-content/uploads/2024/01/British-Council.png",
+                link: "#",
+                fullContent: `
+                    <div class="blog-modal-content">
+                        <img src="https://jbaidoo.com/wp-content/uploads/2024/01/British-Council.png" alt="Blog post image" class="img-fluid mb-4">
+                        <h2>Jobs for Youth – Migration and Employment Promotion</h2>
+                        <div class="blog-meta mb-4">
+                            <span class="post-date">June 2, 2024</span>
+                        </div>
+                        <div class="blog-body">
+                            <p>In 2019, we worked with the British Council and GIZ on their Jobs for Youth: Migration and Employment Promotion Project. The national project was to mentor and resource young entrepreneurs to start and nurture their businesses into sustainable ventures.</p>
+                            <p>The project targeted young people between the ages of 18-35 years who had business ideas or existing businesses that needed scaling up. Participants were taken through intensive training on business development, financial management, marketing and customer service.</p>
+                            <p>At the end of the training, selected participants were given seed funding to start or expand their businesses. We followed up with these entrepreneurs over a six-month period, documenting their progress and challenges.</p>
+                            <p>The project was highly successful, with many of the beneficiaries growing their businesses significantly. Some have even become employers, creating jobs for other young people in their communities.</p>
+                            <p>This project reinforced our belief in the potential of young Ghanaian entrepreneurs and the importance of providing them with the right support and resources to succeed.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 3,
+                title: "WISE Program Photostory",
+                excerpt: "In June 2023, we were hired by CDC Consult to produce a video documentary telling the story of selected women...",
+                date: "March 18, 2024",
+                image: "https://jbaidoo.com/wp-content/uploads/2024/01/Plan-2.png",
+                link: "#",
+                fullContent: `
+                    <div class="blog-modal-content">
+                        <img src="https://jbaidoo.com/wp-content/uploads/2024/01/Plan-2.png" alt="Blog post image" class="img-fluid mb-4">
+                        <h2>WISE Program Photostory</h2>
+                        <div class="blog-meta mb-4">
+                            <span class="post-date">March 18, 2024</span>
+                        </div>
+                        <div class="blog-body">
+                            <p>In June 2023, we were hired by CDC Consult to produce a video documentary telling the story of selected women who were beneficiaries of the WISE programme. As part of our work, we selected women in four regions; Bono, Ahafo, Northern and Upper East regions to document their stories.</p>
+                            <p>The Women's Innovation for Sustainable Enterprises (WISE) programme was designed to empower women entrepreneurs with skills, knowledge and resources to grow their businesses sustainably.</p>
+                            <p>We spent two weeks traveling across these regions, interviewing the women and capturing their daily business activities. The stories were inspiring - from a shea butter processor in the North who now exports her products internationally, to a poultry farmer in the Bono region who has grown from 50 chickens to over 5,000 birds.</p>
+                            <p>The documentary highlighted not just their business successes, but also the challenges they faced as women entrepreneurs in Ghana, including access to financing, market access, and balancing business with family responsibilities.</p>
+                            <p>The final documentary was screened at the national WISE programme closing ceremony and has since been used as a training tool for other women's entrepreneurship programs across the country.</p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 4,
+                title: "Documentary Filmmaking in Ghana",
+                excerpt: "Exploring the growing documentary filmmaking industry in Ghana and its impact on social change...",
+                date: "February 5, 2024",
+                image: "https://jbaidoo.com/wp-content/uploads/2024/02/JBCL-PHOTOVOICE_1-scaled.jpg",
+                link: "#",
+                fullContent: `
+                    <div class="blog-modal-content">
+                        <img src="https://jbaidoo.com/wp-content/uploads/2024/02/JBCL-PHOTOVOICE_1-scaled.jpg" alt="Blog post image" class="img-fluid mb-4">
+                        <h2>Documentary Filmmaking in Ghana</h2>
+                        <div class="blog-meta mb-4">
+                            <span class="post-date">February 5, 2024</span>
+                        </div>
+                        <div class="blog-body">
+                            <p>Ghana's documentary filmmaking industry has seen significant growth over the past decade, becoming an important tool for social change, education and cultural preservation.</p>
+                            <p>At Justice Baidoo Consulting Limited, we've been at the forefront of this movement, producing documentaries that highlight critical social issues while maintaining high production standards.</p>
+                            <p>The rise of digital technology has democratized documentary production, allowing more young Ghanaians to tell their stories. However, this has also led to challenges in maintaining quality and ethical standards in documentary journalism.</p>
+                            <p>We've observed several key trends in Ghanaian documentary filmmaking:</p>
+                            <ul>
+                                <li>Increased focus on social issues like gender equality, climate change and education</li>
+                                <li>Growing collaborations between local and international production teams</li>
+                                <li>More opportunities for training and capacity building</li>
+                                <li>Emergence of documentary film festivals in Ghana</li>
+                            </ul>
+                            <p>Looking ahead, we believe documentary filmmaking in Ghana will continue to grow as a powerful medium for social change, with more opportunities for funding and international distribution.</p>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // Function to create blog cards
+        function createBlogCards() {
+            const blogGrid = document.getElementById('blogGrid');
+            
+            blogPosts.forEach(post => {
+                const blogCard = document.createElement('article');
+                blogCard.className = 'blog-card';
+                blogCard.innerHTML = `
+                    <div class="blog-img">
+                        <img src="${post.image}" alt="${post.title}" class="lazy-load" loading="lazy">
+                    </div>
+                    <div class="blog-content">
+                        <h3><a href="#" class="blog-title-link" data-post-id="${post.id}">${post.title}</a></h3>
+                        <p class="blog-excerpt">${post.excerpt}</p>
+                        <div class="blog-meta">
+                            <span class="post-date">${post.date}</span>
+                            <a href="#" class="read-more" data-post-id="${post.id}">Read More →</a>
+                        </div>
+                    </div>
+                `;
+                blogGrid.appendChild(blogCard);
             });
-        });
+            
+            // Add event listeners to all read more links
+            document.querySelectorAll('.read-more, .blog-title-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const postId = this.getAttribute('data-post-id');
+                    showBlogPost(postId);
+                });
+            });
+            
+            // Initialize lazy loading
+            lazyLoadImages();
+        }
+        
+        // Lazy load images
+        function lazyLoadImages() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const image = entry.target;
+                            image.src = image.src;
+                            image.classList.add('loaded');
+                            imageObserver.unobserve(image);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(image => {
+                    imageObserver.observe(image);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                lazyImages.forEach(image => {
+                    image.classList.add('loaded');
+                });
+            }
+        }
+        
+        // Function to show blog post in modal
+        function showBlogPost(postId) {
+            const post = blogPosts.find(p => p.id == postId);
+            if (!post) return;
+            
+            const modalContent = document.getElementById('blogModalContent');
+            modalContent.innerHTML = post.fullContent;
+            
+            // Initialize and show the modal
+            const blogModal = new bootstrap.Modal(document.getElementById('blogModal'));
+            blogModal.show();
+        }
+        
+        // Initialize the blog when DOM is loaded
+        document.addEventListener('DOMContentLoaded', createBlogCards);
     </script>
 </body>
 </html>
